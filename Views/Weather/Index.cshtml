@@ -1,0 +1,25 @@
+﻿@model WeatherViewModel
+
+<h1>Погода в @Model?.City</h1>
+
+<form method="post">
+    <input type="text" name="city" placeholder="Введите город" required />
+    <button type="submit">Узнать погоду</button>
+</form>
+
+@if (Model != null)
+{
+    <div class="weather-card">
+        <h2>@Model.City, @Model.Country</h2>
+        <img src="@Model.Icon" alt="Погода" />
+        <p>Температура: @Model.Temperature °C</p>
+        <p>@Model.Description</p>
+        <p>Влажность: @Model.Humidity%</p>
+        <p>Ветер: @Model.WindSpeed м/с</p>
+    </div>
+}
+
+@if (ViewBag.Error != null)
+{
+    <p style="color: red;">@ViewBag.Error</p>
+}
